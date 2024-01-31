@@ -47,8 +47,8 @@
         "id": "bd202a48-c2fc-4a06-ac6d-e65e4bf1abcb",
         "user_name": "op_guest",
         "email":"op_guest@op.com",
-        "role": "GUEST",
-        "user_type": 1,
+        "role": "ADMIN",
+        "user_type": 2,
         "user_status": 1
       },
       "user_password" : {
