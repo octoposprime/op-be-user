@@ -7,7 +7,4 @@ const (
 	UserTypeNONE UserType = iota
 	UserTypeADMIN
 	UserTypeUSER
-	UserTypePARTNER
-	UserTypeANALYST
-	UserTypePM
 )
