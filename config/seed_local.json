@@ -1,0 +1,60 @@
+{
+  "users": [
+    {
+      "user": {
+        "id": "9cee66a6-8788-47ba-b53e-c0fb3ab29722",
+        "user_name": "op_admin",
+        "email":"op_admin@op.com",
+        "role": "ADMIN",
+        "user_type": 1,
+        "user_status": 1
+      },
+      "user_password" : {
+        "password": "op",
+        "password_status": 1
+      }
+    },
+    {
+      "user": {
+        "id": "20b7e1a5-b716-4820-bf98-e69c08786a00",
+        "user_name": "op_manager",
+        "email":"op_manager@op.com",
+        "role": "MANAGER",
+        "user_type": 1,
+        "user_status": 1
+      },
+      "user_password" : {
+        "password": "op",
+        "password_status": 1
+      }
+    },
+    {
+      "user": {
+        "id": "e2dbea02-7a1a-4403-9541-16847520e568",
+        "user_name": "op_user",
+        "email":"op_user@op.com",
+        "role": "USER",
+        "user_type": 1,
+        "user_status": 1
+      },
+      "user_password" : {
+        "password": "op",
+        "password_status": 1
+      }
+    },
+    {
+      "user": {
+        "id": "bd202a48-c2fc-4a06-ac6d-e65e4bf1abcb",
+        "user_name": "op_guest",
+        "email":"op_guest@op.com",
+        "role": "GUEST",
+        "user_type": 1,
+        "user_status": 1
+      },
+      "user_password" : {
+        "password": "op",
+        "password_status": 1
+      }
+    }
+    ]
+  }

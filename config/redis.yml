@@ -1,0 +1,5 @@
+redis:
+  enabled: true
+  host: "redis"
+  port: "6379"
+  db: 0

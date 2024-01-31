@@ -1,0 +1,10 @@
+debug: true
+local: false
+restapi:
+  probe_host: "0.0.0.0"
+  probe_port: "18000"
+grpc:
+  logger_host: "op-be-logging"
+  logger_port: "18080"
+  user_host: "op-be-user"
+  user_port: "18080"
