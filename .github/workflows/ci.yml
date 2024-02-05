@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: |
           go mod tidy
-          go get -u -v ./...
+          go get  -v ./...
           go mod download
       - name: Build
         run: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o main ./cmd/service/main.go
@@ -36,7 +36,7 @@ jobs:
       - name: Install dependencies
         run: |
           go mod tidy
-          go get -u -v ./...
+          go get  -v ./...
           go mod download
       - name: Test with the Go CLI
         run: go test -v -race ./... -coverprofile=./cover.out

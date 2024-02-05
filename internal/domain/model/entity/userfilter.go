@@ -11,7 +11,6 @@ import (
 // UserFilter is a struct that represents the filter of a user.
 type UserFilter struct {
 	Id         uuid.UUID     `json:"id"`          // Id is the id of the user.
-	CompanyId  uuid.UUID     `json:"company_id"`  // CompanyId is the id of the user's company.
 	UserName   string        `json:"user_name"`   // UserName is the user name of the user.
 	Email      string        `json:"email"`       // Email is the email address of the user.
 	UserType   mo.UserType   `json:"user_type"`   // UserType is the type of the user.
@@ -54,7 +53,6 @@ func NewUserFilter(id uuid.UUID,
 	offset int) *UserFilter {
 	return &UserFilter{
 		Id:            id,
-		CompanyId:     compnayId,
 		UserName:      userName,
 		Email:         email,
 		UserType:      userType,
@@ -78,7 +76,6 @@ func NewUserFilter(id uuid.UUID,
 func NewEmptyUserFilter() *UserFilter {
 	return &UserFilter{
 		Id:            uuid.UUID{},
-		CompanyId:     uuid.UUID{},
 		UserName:      "",
 		Email:         "",
 		UserType:      mo.UserTypeNONE,
@@ -101,7 +98,6 @@ func NewEmptyUserFilter() *UserFilter {
 // String returns a string representation of the UserFilter.
 func (s *UserFilter) String() string {
 	return fmt.Sprintf("Id: %v, "+
-		"CompanyId: %v, "+
 		"UserName: %v, "+
 		"Email: %v, "+
 		"UserType: %v, "+
@@ -119,7 +115,6 @@ func (s *UserFilter) String() string {
 		"Limit: %v, "+
 		"Offset: %v",
 		s.Id,
-		s.CompanyId,
 		s.UserName,
 		s.Email,
 		s.UserType,

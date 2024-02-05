@@ -45,7 +45,7 @@ func (a EBusAdapter) Listen(ctx context.Context, channelName string, callBack fu
 			continue
 		}
 		inChannelName := result[0]
-		user := tserialize.NewSerializer(me.User{}).FormJson(result[1]).(*pb.User)
+		user := tserialize.SerializeFromJson[*pb.User](result[1])
 		go callBack(inChannelName, *map_ebus.NewUser(user).ToEntity())
 	}
 }

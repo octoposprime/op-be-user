@@ -25,7 +25,6 @@ func (a Service) Migrate() Service {
 			userPasswordEntity := me.NewUserPassword(
 				uuid.UUID{},
 				inUser.Id,
-				inUser.CompanyId,
 				seedUser.UserPassword,
 			)
 			err = a.ChangePassword(context.TODO(), *userPasswordEntity)

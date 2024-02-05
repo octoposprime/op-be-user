@@ -13,7 +13,6 @@ var ERRORS []error = []error{
 	ErrorUserIsEmpty,
 	ErrorUserIsInactive,
 	ErrorUserUsernameOrEmailAreEmpty,
-	ErrorUserCompanyIdIsEmpty,
 	ErrorUserTokenIsEmpty,
 	ErrorUserAuthenticationTokenAndRefreshTokenAreEmpty,
 	ErrorUserUsernameIsEmpty,
@@ -35,9 +34,7 @@ var ERRORS []error = []error{
 
 const (
 	ErrId              string = "id"
-	ErrEmpty           string = "empty"
 	ErrUser            string = "user"
-	ErrCompany         string = "company"
 	ErrUserName        string = "username"
 	ErrPassword        string = "password"
 	ErrToken           string = "token"
@@ -49,6 +46,7 @@ const (
 )
 
 const (
+	ErrEmpty         string = "empty"
 	ErrTooShort      string = "tooshort"
 	ErrTooLong       string = "toolong"
 	ErrNotValid      string = "notvalid"
@@ -63,7 +61,6 @@ var (
 	ErrorUserIsEmpty                                    error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrEmpty)
 	ErrorUserIsInactive                                 error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrInactive)
 	ErrorUserUsernameOrEmailAreEmpty                    error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrUserNameOrEmail + smodel.ErrSep + ErrEmpty)
-	ErrorUserCompanyIdIsEmpty                           error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrCompany + smodel.ErrSep + ErrId + smodel.ErrSep + ErrEmpty)
 	ErrorUserTokenIsEmpty                               error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrToken + smodel.ErrSep + ErrEmpty)
 	ErrorUserAuthenticationTokenAndRefreshTokenAreEmpty error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrAuthentication + smodel.ErrSep + ErrRefrehsToken + smodel.ErrSep + ErrEmpty)
 	ErrorUserUsernameIsEmpty                            error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrUserName + smodel.ErrSep + ErrEmpty)

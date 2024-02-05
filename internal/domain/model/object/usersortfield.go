@@ -6,7 +6,6 @@ type UserSortField int8
 const (
 	UserSortFieldNONE UserSortField = iota
 	UserSortFieldId
-	UserSortFieldCompanyId
 	UserSortFieldName
 	UserSortFieldCreatedAt
 	UserSortFieldUpdatedAt

@@ -11,7 +11,6 @@ import (
 // User is a struct that represents the entity of a user basic values.
 type User struct {
 	Id        uuid.UUID `json:"id"`         // Id is the id of the user.
-	CompanyId uuid.UUID `json:"company_id"` // CompanyId is the id of the user's company.
 	mo.User             // User is the basic values of the user.
 
 	// Only for view
@@ -21,11 +20,9 @@ type User struct {
 
 // NewUser creates a new *User.
 func NewUser(id uuid.UUID,
-	companyId uuid.UUID,
 	user mo.User) *User {
 	return &User{
 		Id:        id,
-		CompanyId: companyId,
 		User:      user,
 	}
 }
@@ -34,7 +31,6 @@ func NewUser(id uuid.UUID,
 func NewEmptyUser() *User {
 	return &User{
 		Id:        uuid.UUID{},
-		CompanyId: uuid.UUID{},
 		User:      *mo.NewEmptyUser(),
 	}
 }
@@ -42,19 +38,14 @@ func NewEmptyUser() *User {
 // String returns a string representation of the User.
 func (s *User) String() string {
 	return fmt.Sprintf("Id: %v, "+
-		"CompanyId: %v, "+
 		"User: %v",
 		s.Id,
-		s.CompanyId,
 		s.User)
 }
 
 // Equals returns true if the User is equal to the other User.
 func (s *User) Equals(other *User) bool {
 	if s.Id != other.Id {
-		return false
-	}
-	if s.CompanyId != other.CompanyId {
 		return false
 	}
 	if !s.User.Equals(&other.User) {
@@ -67,7 +58,6 @@ func (s *User) Equals(other *User) bool {
 func (s *User) Clone() *User {
 	return &User{
 		Id:        s.Id,
-		CompanyId: s.CompanyId,
 		User:      *s.User.Clone(),
 	}
 }
@@ -75,9 +65,6 @@ func (s *User) Clone() *User {
 // IsEmpty returns true if the User is empty.
 func (s *User) IsEmpty() bool {
 	if s.Id.String() != "" && s.Id != (uuid.UUID{}) {
-		return false
-	}
-	if s.CompanyId.String() != "" && s.CompanyId != (uuid.UUID{}) {
 		return false
 	}
 	if !s.User.IsEmpty() {
@@ -94,7 +81,6 @@ func (s *User) IsNotEmpty() bool {
 // Clear clears the User.
 func (s *User) Clear() {
 	s.Id = uuid.UUID{}
-	s.CompanyId = uuid.UUID{}
 	s.User.Clear()
 }
 
@@ -102,9 +88,6 @@ func (s *User) Clear() {
 func (s *User) Validate() error {
 	if s.IsEmpty() {
 		return mo.ErrorUserIsEmpty
-	}
-	if s.CompanyId.String() == "" || s.CompanyId != (uuid.UUID{}) {
-		return mo.ErrorUserCompanyIdIsEmpty
 	}
 	if err := s.User.Validate(); err != nil {
 		return err

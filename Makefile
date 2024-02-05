@@ -42,8 +42,8 @@ coverage: ## Run the tests of the project and export the coverage
 	$(GOTEST) -cover -covermode=count -coverprofile=out/profile.cov ./...
 	$(GOCMD) tool cover -func out/profile.cov
 ifeq ($(EXPORT_RESULT), true)
-	GO111MODULE=off go get -u github.com/AlekSi/gocov-xml
-	GO111MODULE=off go get -u github.com/axw/gocov/gocov
+	GO111MODULE=off go get  github.com/AlekSi/gocov-xml
+	GO111MODULE=off go get  github.com/axw/gocov/gocov
 	gocov convert out/profile.cov | gocov-xml > out/coverage.xml
 endif
 
