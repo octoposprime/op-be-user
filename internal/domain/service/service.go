@@ -2,6 +2,7 @@ package domain
 
 import (
 	"strings"
+	"unicode"
 
 	me "github.com/octoposprime/op-be-user/internal/domain/model/entity"
 	mo "github.com/octoposprime/op-be-user/internal/domain/model/object"
@@ -50,6 +51,9 @@ func (s *Service) CheckUserNameRules(user *me.User) error {
 	if strings.Contains(user.UserName, " ") {
 		return mo.ErrorUserUsernameIsNotValid
 	}
+	if !s.CheckUserNameSpecialCharacters(user.UserName) {
+		return mo.ErrorUserUsernameIsNotValid
+	}
 	return nil
 }
 
@@ -90,4 +94,13 @@ func (s *Service) CheckIsAuthenticable(user *me.User) error {
 		return mo.ErrorUserIsInactive
 	}
 	return nil
+}
+
+func (s *Service) CheckUserNameSpecialCharacters(username string) bool {
+	for _, char := range username {
+		if !unicode.IsLetter(char) && !unicode.IsNumber(char) && char != '-' && char != '_' {
+			return false
+		}
+	}
+	return true
 }

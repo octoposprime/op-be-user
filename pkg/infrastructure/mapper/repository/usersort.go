@@ -6,7 +6,7 @@ import (
 
 var UserSortMap map[mo.UserSortField]string = map[mo.UserSortField]string{
 	mo.UserSortFieldId:        "id",
-	mo.UserSortFieldName:      "name",
+	mo.UserSortFieldName:      "user_name",
 	mo.UserSortFieldCreatedAt: "created_at",
 	mo.UserSortFieldUpdatedAt: "updated_at",
 }
