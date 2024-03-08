@@ -1,7 +1,7 @@
 package domain
 
 import (
-	"testing"
+    "testing"
 
 	me "github.com/octoposprime/op-be-user/internal/domain/model/entity"
 )

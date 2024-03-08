@@ -6,6 +6,15 @@ import (
 	smodel "github.com/octoposprime/op-be-shared/pkg/model"
 )
 
+var (
+    ErrorUserUsernameIsEmpty            = errors.New("username is empty")
+    ErrorUserUsernameIsTooShort         = errors.New("username is too short")
+    ErrorUserUsernameIsTooLong          = errors.New("username is too long")
+    ErrorUserUsernameContainsSpace      = errors.New("username contains space")
+    ErrorUserUsernameContainsSpecialChars = errors.New("username contains special characters")
+    ErrorUserUsernameContainsInvalidChars = errors.New("username contains invalid characters")
+)
+
 var ERRORS []error = []error{
 	ErrorNone,
 	ErrorUserNotFound,
