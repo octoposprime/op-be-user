@@ -2,12 +2,14 @@ package domain
 
 import (
     "strings"
+    "testing"
 
     me "github.com/octoposprime/op-be-user/internal/domain/model/entity"
     mo "github.com/octoposprime/op-be-user/internal/domain/model/object"
+    "github.com/stretchr/testify/require"
 )
 
-// This is the service layer of the domain layer.
+// Service is the service layer of the domain layer.
 type Service struct {
 }
 
@@ -37,6 +39,7 @@ func (s *Service) ValidateToken(token *mo.Token) error {
     return token.Validate()
 }
 
+// CheckUserNameRules checks the rules for the username when creating a new user.
 func (s *Service) CheckUserNameRules(user *me.User) error {
     if user.UserName == "" {
         return mo.ErrorUserUsernameIsEmpty
@@ -68,6 +71,7 @@ func (s *Service) CheckUserNameRules(user *me.User) error {
     return nil
 }
 
+// CheckEmailRules checks the rules for the email when creating a new user.
 func (s *Service) CheckEmailRules(user *me.User) error {
     if user.Email == "" {
         return mo.ErrorUserEmailIsEmpty
@@ -84,6 +88,7 @@ func (s *Service) CheckEmailRules(user *me.User) error {
     return nil
 }
 
+// CheckPasswordRules checks the rules for the password when creating a new user.
 func (s *Service) CheckPasswordRules(userPassword *me.UserPassword) error {
     if userPassword.Password == "" {
         return mo.ErrorUserPasswordIsEmpty
@@ -100,9 +105,36 @@ func (s *Service) CheckPasswordRules(userPassword *me.UserPassword) error {
     return nil
 }
 
+// CheckIsAuthenticable checks the authenticity of the user.
 func (s *Service) CheckIsAuthenticable(user *me.User) error {
     if user.UserStatus == mo.UserStatusINACTIVE {
         return mo.ErrorUserIsInactive
     }
     return nil
+}
+
+// TestCheckUserNameSpecialCharacters tests the CheckUserNameRules function for special characters in usernames.
+func TestCheckUserNameSpecialCharacters(t *testing.T) {
+    service := NewService()
+
+    tests := []struct {
+        name       string
+        userName   string
+        expectFail bool
+    }{
+        {"ContainsSpecialChars", "asd!^+.", true},
+        {"NoSpecialChars", "Qwe123_", false},
+    }
+
+    for _, tt := range tests {
+        t.Run(tt.name, func(t *testing.T) {
+            user := &me.User{UserName: tt.userName}
+            err := service.CheckUserNameRules(user)
+            if tt.expectFail {
+                require.Error(t, err, "Expected an error for username: %s", tt.userName)
+            } else {
+                require.NoError(t, err, "Did not expect an error for username: %s", tt.userName)
+            }
+        })
+    }
 }
