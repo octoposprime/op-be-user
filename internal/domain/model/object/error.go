@@ -19,6 +19,8 @@ var ERRORS []error = []error{
 	ErrorUserUsernameIsExists,
 	ErrorUserUsernameIsTooShort,
 	ErrorUserUsernameIsTooLong,
+	ErrorUserUsernameContainsInValidChars,
+	ErrorUserUsernameContainsSpecialChars,
 	ErrorUserUsernameIsNotValid,
 	ErrorUserEmailIsEmpty,
 	ErrorUserEmailIsNotValid,
@@ -49,6 +51,8 @@ const (
 	ErrEmpty         string = "empty"
 	ErrTooShort      string = "tooshort"
 	ErrTooLong       string = "toolong"
+	ErrContainsInvalidChars string = "containsinvalidchars"
+	ErrContainsSpecialChars string = "containsspecialchars"
 	ErrNotValid      string = "notvalid"
 	ErrInactive      string = "inactive"
 	ErrAlreadyExists string = "alreadyexists"
@@ -67,6 +71,8 @@ var (
 	ErrorUserUsernameIsExists                           error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrUserName + smodel.ErrSep + ErrAlreadyExists)
 	ErrorUserUsernameIsTooShort                         error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrUserName + smodel.ErrSep + ErrTooShort)
 	ErrorUserUsernameIsTooLong                          error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrUserName + smodel.ErrSep + ErrTooLong)
+	ErrorUserUsernameContainsInValidChars               error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrUserName + smodel.ErrSep + ErrContainsInvalidChars)
+	ErrorUserUsernameContainsSpecialChars               error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrUserName + smodel.ErrSep + ErrorUserUsernameContainsSpecialChars )         
 	ErrorUserUsernameIsNotValid                         error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrUserName + smodel.ErrSep + ErrNotValid)
 	ErrorUserEmailIsEmpty                               error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrEmail + smodel.ErrSep + ErrEmpty)
 	ErrorUserEmailIsNotValid                            error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrEmail + smodel.ErrSep + ErrNotValid)
