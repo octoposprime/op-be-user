@@ -119,7 +119,7 @@ func (a DbAdapter) GetUsersByFilter(ctx context.Context, userFilter me.UserFilte
 
 // SaveUser insert a new user or update the existing one in the database.
 func (a DbAdapter) SaveUser(ctx context.Context, user me.User) (me.User, error) {
-	userDbMapper := map_repo.NewUserFromEntity(&user)
+	userDbMapper := map_repo.NewUserFromEntity(user)
 	qry := a.DbClient
 	if user.Id.String() != "" && user.Id != (uuid.UUID{}) {
 		qry = qry.Omit("created_at")
@@ -141,7 +141,7 @@ func (a DbAdapter) SaveUser(ctx context.Context, user me.User) (me.User, error) 
 
 // DeleteUser soft-deletes the given user in the database.
 func (a DbAdapter) DeleteUser(ctx context.Context, user me.User) (me.User, error) {
-	userDbMapper := map_repo.NewUserFromEntity(&user)
+	userDbMapper := map_repo.NewUserFromEntity(user)
 	userId, _ := ctx.Value(smodel.QueryKeyUid).(string)
 	userDbMapper.DeletedBy, _ = uuid.Parse(userId)
 	result := a.DbClient.Delete(&userDbMapper)
@@ -175,7 +175,7 @@ func (a DbAdapter) GetUserPasswordByUserId(ctx context.Context, userId uuid.UUID
 
 // ChangePassword changes the given user password in the database.
 func (a DbAdapter) ChangePassword(ctx context.Context, userPassword me.UserPassword) (me.UserPassword, error) {
-	userPasswordDbMapper := map_repo.NewUserPasswordFromEntity(&userPassword)
+	userPasswordDbMapper := map_repo.NewUserPasswordFromEntity(userPassword)
 	qry := a.DbClient
 	if userPassword.Id.String() != "" && userPassword.Id != (uuid.UUID{}) {
 		qry = qry.Omit("created_at")

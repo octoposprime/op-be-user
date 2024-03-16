@@ -63,7 +63,7 @@ func (s *UserFilter) String() string {
 }
 
 // NewUserFilterFromEntity creates a new *UserFilter from entity.
-func NewUserFilterFromEntity(entity *me.UserFilter) *UserFilter {
+func NewUserFilterFromEntity(entity me.UserFilter) *UserFilter {
 	id := entity.Id.String()
 	userName := entity.UserName
 	email := entity.Email

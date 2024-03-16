@@ -45,7 +45,7 @@ func (s *User) String() string {
 }
 
 // NewUserFromEntity creates a new *User from entity.
-func NewUserFromEntity(entity *me.User) *User {
+func NewUserFromEntity(entity me.User) *User {
 	return &User{
 		&pb.User{
 			Id:         entity.Id.String(),
@@ -73,7 +73,7 @@ func (s *User) ToPb() *pb.User {
 // ToEntity returns a entity representation of the User.
 func (s *User) ToEntity() *me.User {
 	return &me.User{
-		Id:        tuuid.FromString(s.proto.Id),
+		Id: tuuid.FromString(s.proto.Id),
 		User: mo.User{
 			UserName:   s.proto.Username,
 			Email:      s.proto.Email,
@@ -96,7 +96,7 @@ type Users struct {
 func NewUserFromEntities(entities me.Users) Users {
 	users := make([]*User, len(entities.Users))
 	for i, entity := range entities.Users {
-		users[i] = NewUserFromEntity(&entity)
+		users[i] = NewUserFromEntity(entity)
 	}
 
 	return Users{
