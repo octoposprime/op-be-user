@@ -16,4 +16,4 @@ jobs:
           LABELS: ${{ secrets.REPO_TEAM }}
           GH_REPO: ${{ github.repository }}
           NUMBER: ${{ github.event.issue.number }}
-          PROJECT: OctopOSPrime
+          PROJECT: ${{ secrets.ASSIGN_PROJECT }}
