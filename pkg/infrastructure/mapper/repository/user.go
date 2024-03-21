@@ -70,7 +70,7 @@ func (s *User) String() string {
 }
 
 // NewUserFromEntity creates a new *User from entity.
-func NewUserFromEntity(entity *me.User) *User {
+func NewUserFromEntity(entity me.User) *User {
 	return &User{
 		Model:      tgorm.Model{ID: entity.Id},
 		UserName:   entity.UserName,
@@ -109,7 +109,7 @@ type Users []*User
 func NewUserFromEntities(entities []me.User) Users {
 	users := make([]*User, len(entities))
 	for i, entity := range entities {
-		users[i] = NewUserFromEntity(&entity)
+		users[i] = NewUserFromEntity(entity)
 	}
 	return users
 }

@@ -33,7 +33,7 @@ func (s *UserPassword) String() string {
 }
 
 // NewUserPasswordFromEntity creates a new *UserPassword from entity.
-func NewUserPasswordFromEntity(entity *me.UserPassword) *UserPassword {
+func NewUserPasswordFromEntity(entity me.UserPassword) *UserPassword {
 	return &UserPassword{
 		&pb.UserPassword{
 			Id:             entity.Id.String(),
@@ -67,7 +67,7 @@ type UserPasswords []*UserPassword
 func NewUserPasswordFromEntities(entities []me.UserPassword) UserPasswords {
 	userPasswords := make([]*UserPassword, len(entities))
 	for i, entity := range entities {
-		userPasswords[i] = NewUserPasswordFromEntity(&entity)
+		userPasswords[i] = NewUserPasswordFromEntity(entity)
 	}
 	return userPasswords
 }
