@@ -13,7 +13,7 @@ You have to see ![github.com/octoposprime/op-be-docs](https://github.com/octopos
 ```
 POSTGRES_USERNAME=op
 POSTGRES_PASSWORD=op
-POSTGRES_DATABASE=your_database_name
+POSTGRES_DATABASE=op
 JWT_SECRET_KEY=op
 REDIS_PASSWORD=op
 ```
