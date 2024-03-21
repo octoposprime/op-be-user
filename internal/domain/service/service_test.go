@@ -1,15 +1,15 @@
-package domain_test
+package domain
 
 import (
     "testing"
 
     me "github.com/octoposprime/op-be-user/internal/domain/model/entity"
-    "github.com/octoposprime/op-be-user/internal/domain"
+    ds "github.com/octoposprime/op-be-user/internal/domain/service"
     "github.com/stretchr/testify/require"
 )
 
 func TestService_CheckUserNameRules(t *testing.T) {
-    service := domain.NewService()
+    service := ds.NewService()
 
     tests := []struct {
         name      string

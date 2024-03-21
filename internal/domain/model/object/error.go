@@ -19,7 +19,7 @@ var ERRORS []error = []error{
 	ErrorUserUsernameIsExists,
 	ErrorUserUsernameIsTooShort,
 	ErrorUserUsernameIsTooLong,
-	ErrorUserUsernameContainsInValidChars,
+	ErrorUserUsernameContainsInvalidChars,
 	ErrorUserUsernameContainsSpecialChars,
 	ErrorUserUsernameIsNotValid,
 	ErrorUserEmailIsEmpty,
@@ -71,8 +71,8 @@ var (
 	ErrorUserUsernameIsExists                           error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrUserName + smodel.ErrSep + ErrAlreadyExists)
 	ErrorUserUsernameIsTooShort                         error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrUserName + smodel.ErrSep + ErrTooShort)
 	ErrorUserUsernameIsTooLong                          error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrUserName + smodel.ErrSep + ErrTooLong)
-	ErrorUserUsernameContainsInValidChars               error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrUserName + smodel.ErrSep + ErrContainsInvalidChars)
-	ErrorUserUsernameContainsSpecialChars               error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrUserName + smodel.ErrSep + ErrorUserUsernameContainsSpecialChars )         
+	ErrorUserUsernameContainsInvalidChars               error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrUserName + smodel.ErrSep + ErrContainsInvalidChars)
+	ErrorUserUsernameContainsSpecialChars               error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrUserName + smodel.ErrSep + ErrContainsSpecialChars )         
 	ErrorUserUsernameIsNotValid                         error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrUserName + smodel.ErrSep + ErrNotValid)
 	ErrorUserEmailIsEmpty                               error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrEmail + smodel.ErrSep + ErrEmpty)
 	ErrorUserEmailIsNotValid                            error = errors.New(smodel.ErrBase + smodel.ErrSep + ErrUser + smodel.ErrSep + ErrEmail + smodel.ErrSep + ErrNotValid)

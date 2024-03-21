@@ -50,9 +50,7 @@ func (s *Service) CheckUserNameRules(user *me.User) error {
     if len(user.UserName) > 20 {
         return mo.ErrorUserUsernameIsTooLong
     }
-    // Check for spaces
-    if strings.Contains(user.UserName, " ") {
-        return mo.ErrorUserUsernameContainsSpace
+    
     }
     // Check for special characters
     specialChars := "!@#$%^&*()-+=}{[]|\\:;\"'<>,.?/"
@@ -128,7 +126,7 @@ func TestCheckUserNameSpecialCharacters(t *testing.T) {
 
     for _, tt := range tests {
         t.Run(tt.name, func(t *testing.T) {
-            user := &me.User{UserName: tt.userName}
+            user := &me.User{Id:{}, CreatedAt:{}, UpdatedAt:{}, mo.User{UserName: tt.userName, Email: "", Role:"", UserType:{}, UserStatus:{}, Tags:[]string, FirstName:"", LastName:"" }}
             err := service.CheckUserNameRules(user)
             if tt.expectFail {
                 require.Error(t, err, "Expected an error for username: %s", tt.userName)
