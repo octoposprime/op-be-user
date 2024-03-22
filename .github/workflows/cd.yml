@@ -2,7 +2,8 @@ name: Docker Image Publish
 
 on:
   push:
-    tags: [ 'v*.*.*' ]
+    branches:
+      - 'phase*'
 
 env:
   REGISTRY: ghcr.io
@@ -21,8 +22,8 @@ jobs:
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
         with:
           registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ secrets.GH_USER }}
+          password: ${{ secrets.GH_TOKEN }}
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
@@ -38,5 +39,5 @@ jobs:
             "JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }}"
             "REDIS_PASSWORD=${{ secrets.REDIS_PASSWORD }}"
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags:  ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:v1.0.0-test
           labels: ${{ steps.meta.outputs.labels }}
