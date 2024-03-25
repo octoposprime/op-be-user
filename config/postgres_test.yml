@@ -1,5 +1,5 @@
 postgresdb:
   enabled: true
-  host: "postgres"
+  host: "postgres.default.svc.cluster.local"
   port: "5432"
   database: "optest"
