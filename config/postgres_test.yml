@@ -2,3 +2,4 @@ postgresdb:
   enabled: true
   host: "postgres.default.svc.cluster.local"
   port: "5432"
+
