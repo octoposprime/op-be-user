@@ -2,4 +2,3 @@ postgresdb:
   enabled: true
   host: "postgres"
   port: "5432"
-  database: "optest"
