@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - 'phase*'
+      - 'test'
 
 env:
   REGISTRY: ghcr.io
