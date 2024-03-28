@@ -33,11 +33,12 @@ jobs:
         uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
         with:
           context: .
-          build-args: |
+         build-args: |
             "POSTGRES_USERNAME=${{ secrets.POSTGRES_USERNAME }}"
             "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}"
             "JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }}"
             "REDIS_PASSWORD=${{ secrets.REDIS_PASSWORD }}"
+            "POSTGRES_DATABASE=${{secrets.POSTGRES_DATABASE}}"
           push: true
           tags:  ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:v1.0.0-test
           labels: ${{ steps.meta.outputs.labels }}
