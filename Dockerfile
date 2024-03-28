@@ -28,6 +28,8 @@ ARG JWT_SECRET_KEY
 ENV JWT_SECRET_KEY=${JWT_SECRET_KEY}
 ARG REDIS_PASSWORD
 ENV REDIS_PASSWORD=${REDIS_PASSWORD}
+ARG POSTGRES_DATABASE
+ENV POSTGRES_DATABASE=${POSTGRES_DATABASE}
 
 COPY --from=base /usr/share/zoneinfo /usr/share/zoneinfo
 COPY --from=base /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
