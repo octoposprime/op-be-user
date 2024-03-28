@@ -28,4 +28,3 @@ make local-run
 TEST=true POSTGRES_USERNAME=op POSTGRES_PASSWORD=op JWT_SECRET_KEY=op REDIS_PASSWORD=op make docker-build
 make docker-run 
 ```
-
