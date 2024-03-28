@@ -32,6 +32,7 @@ func main() {
 	dbConfig.ReadConfig()
 	redisConfig.ReadConfig()
 	seedConfig.ReadConfig()
+	fmt.Println("dbConfig.PostgresDb.Database", dbConfig.PostgresDb.Database)
 	var err error
 
 	fmt.Println("Starting User Service...")
